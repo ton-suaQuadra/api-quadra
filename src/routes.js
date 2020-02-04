@@ -7,7 +7,7 @@ routes.get('/products', ProductController.index)
 routes.get('/products/:id', ProductController.show)
 
 /**
- * @deprecated [#1]Ddeprecated since version 1.0. [2#]Will be deleted in version 2.0
+ * @deprecated [#1]Deprecated since version 1.0. [2#]Will be deleted in version 2.0
  * 
 routes.get('/Test', testController.index)
 */
