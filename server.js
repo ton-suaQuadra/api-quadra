@@ -7,7 +7,7 @@ app.use(express.json())
 
 
 //Conectando o DB
-mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true, useUnifiedTopology: true })
 requireDir('./src/models');
 
 //Rotas
