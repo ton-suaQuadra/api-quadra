@@ -21,7 +21,7 @@ app.use(express.json());
 //Rotas
 app.use(cors())
 const routes = require("./src/routes");
-app.use("/api", routes);
+app.use(routes);
 
 //Servidor rodando na porta 3003
 const PORT = process.env.PORT || 3003;
