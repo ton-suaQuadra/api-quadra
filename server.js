@@ -15,14 +15,26 @@ mongoose.connect(
   }
 );
 
-
-
-app.use(express.json());
-//Rotas
 app.use(cors())
+app.use(express.json());
+
 const routes = require("./src/routes");
 app.use("/api", routes);
-app.get("*", (req, res) => res.json("Initial page"))
+
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
+
+app.use((req, res, next) => {
+  const error = new Error("Not found");
+  error.status = 404;
+  next(error);
+});
 
 //Servidor rodando na porta 3003
 const PORT = process.env.PORT || 3003;
