@@ -1,7 +1,9 @@
 const cors = require('cors')
 const express = require("express");
+const routes = express.Router();
 const mongoose = require("mongoose");
 const requireDir = require("require-dir");
+const InscritosController = require("./src/controllers/InscritosController");
 const app = express();
 
 require('dotenv').config()
@@ -19,8 +21,8 @@ mongoose.connect(
 app.use(express.json());
 //Rotas
 app.use(cors())
-app.use("/api", require("./src/routes"));
-
+// app.use("/api", require("./src/routes"));
+app.use(routes.post("/api/inscritos", InscritosController.store()))
 //Servidor rodando na porta 3003
 const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => {
