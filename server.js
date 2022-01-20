@@ -1,19 +1,29 @@
-const express = require('express');
-const mongoose = require('mongoose')
-const requireDir = require('require-dir')
+const cors = require('cors')
+const express = require("express");
+const mongoose = require("mongoose");
+const requireDir = require("require-dir");
 const app = express();
 
-app.use(express.json())
+const PORT = 3003 || process.env.PORT;
 
-
+require('dotenv').config()
+requireDir("./src/models");
 //Conectando o DB
-mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true, useUnifiedTopology: true })
-requireDir('./src/models');
+mongoose.connect(
+  process.env.MONGODB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
+
+app.use(express.json());
 //Rotas
-app.use('/api', require('./src/routes'))
+app.use(cors())
+app.use("/api", require("./src/routes"));
 
 //Servidor rodando na porta 3003
-app.listen(3003, () => {
-    console.log('Rodando na porta 3003')
-})
+app.listen(PORT, () => {
+  console.log("Rodando na porta 3003");
+});

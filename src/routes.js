@@ -1,11 +1,8 @@
-const express = require('express');
+const express = require("express");
 const routes = express.Router();
-const ProductController = require('./controllers/ProductController')
+const InscritosController = require("./controllers/InscritosController");
 
-routes.get('/products', ProductController.index)
-routes.get('/products/:id', ProductController.show)
-routes.post('/products', ProductController.store)
-routes.put('/products/:id', ProductController.update)
-routes.delete('/products/:id', ProductController.destroy)
+routes.get("/inscritos", InscritosController.index);
+routes.post("/inscritos", InscritosController.store);
 
-module.exports = routes
+module.exports = routes;
