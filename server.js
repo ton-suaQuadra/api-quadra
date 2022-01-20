@@ -21,7 +21,8 @@ app.use(express.json());
 //Rotas
 app.use(cors())
 const routes = require("./src/routes");
-app.use(routes);
+app.use("/api", routes);
+app.get("*", (req, res) => res.json("Initial page"))
 
 //Servidor rodando na porta 3003
 const PORT = process.env.PORT || 3003;
