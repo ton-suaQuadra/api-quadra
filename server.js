@@ -22,6 +22,7 @@ app.use(cors())
 app.use("/api", require("./src/routes"));
 
 //Servidor rodando na porta 3003
-app.listen(process.env.PORT || 3003, () => {
-  console.log("Rodando na porta 3003");
+const PORT = process.env.PORT || 3003;
+app.listen(PORT, () => {
+  console.log(`Rodando na porta ${PORT}`);
 });
