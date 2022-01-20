@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 const requireDir = require("require-dir");
 const app = express();
 
-const PORT = 3003 || process.env.PORT;
-
 require('dotenv').config()
 requireDir("./src/models");
 //Conectando o DB
@@ -24,6 +22,6 @@ app.use(cors())
 app.use("/api", require("./src/routes"));
 
 //Servidor rodando na porta 3003
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3003, () => {
   console.log("Rodando na porta 3003");
 });
