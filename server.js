@@ -10,7 +10,7 @@ require('dotenv').config()
 requireDir("./src/models");
 //Conectando o DB
 mongoose.connect(
-  process.env.MONGODB_URI,
+  "mongodb+srv://suaQuadra:suaquadra@suaquadra.ubpzs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
