@@ -16,7 +16,8 @@ module.exports = {
   },
 
   async store(req, res) {
-    const inscritos = await Inscritos.create(req.body);
+    const {contato} = req.body
+    const inscritos = await Inscritos.create(contato);
     return res.json(inscritos);
   },
 };
